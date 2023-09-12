@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 12, 2023 at 08:04 AM
+-- Generation Time: Sep 12, 2023 at 08:21 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -48,31 +48,15 @@ CREATE TABLE `disposisi_surat` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `surat_keluar`
+-- Table structure for table `surat`
 --
 
-CREATE TABLE `surat_keluar` (
-  `id` int(11) NOT NULL,
-  `nomor_surat` int(11) NOT NULL,
-  `tanggal_surat` date NOT NULL,
-  `tujuan` text NOT NULL,
-  `nomor_agenda` int(11) NOT NULL,
-  `tanggal_agenda` date NOT NULL,
-  `buku_id` int(11) NOT NULL,
-  `status` enum('Draft','Proses','Selesai','Tahan') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `surat_masuk`
---
-
-CREATE TABLE `surat_masuk` (
+CREATE TABLE `surat` (
   `id` int(11) NOT NULL,
   `nomor_surat` int(11) NOT NULL,
   `tanggal_surat` date NOT NULL,
   `pengirim` text NOT NULL,
+  `penerima` text DEFAULT NULL,
   `nomor_agenda` int(11) NOT NULL,
   `tanggal_agenda` date NOT NULL,
   `buku_id` int(11) NOT NULL,
@@ -93,6 +77,13 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `username`, `password`, `jabatan`) VALUES
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Admin');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -111,16 +102,9 @@ ALTER TABLE `disposisi_surat`
   ADD KEY `surat_masuk_id` (`surat_masuk_id`);
 
 --
--- Indexes for table `surat_keluar`
+-- Indexes for table `surat`
 --
-ALTER TABLE `surat_keluar`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `buku_id` (`buku_id`);
-
---
--- Indexes for table `surat_masuk`
---
-ALTER TABLE `surat_masuk`
+ALTER TABLE `surat`
   ADD PRIMARY KEY (`id`),
   ADD KEY `buku_id` (`buku_id`);
 
@@ -147,22 +131,16 @@ ALTER TABLE `disposisi_surat`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `surat_keluar`
+-- AUTO_INCREMENT for table `surat`
 --
-ALTER TABLE `surat_keluar`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `surat_masuk`
---
-ALTER TABLE `surat_masuk`
+ALTER TABLE `surat`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
@@ -173,19 +151,13 @@ ALTER TABLE `user`
 --
 ALTER TABLE `disposisi_surat`
   ADD CONSTRAINT `disposisi_surat_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `disposisi_surat_ibfk_2` FOREIGN KEY (`surat_masuk_id`) REFERENCES `surat_masuk` (`id`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `disposisi_surat_ibfk_2` FOREIGN KEY (`surat_masuk_id`) REFERENCES `surat` (`id`) ON UPDATE CASCADE;
 
 --
--- Constraints for table `surat_keluar`
+-- Constraints for table `surat`
 --
-ALTER TABLE `surat_keluar`
-  ADD CONSTRAINT `surat_keluar_ibfk_1` FOREIGN KEY (`buku_id`) REFERENCES `buku` (`id`) ON UPDATE CASCADE;
-
---
--- Constraints for table `surat_masuk`
---
-ALTER TABLE `surat_masuk`
-  ADD CONSTRAINT `surat_masuk_ibfk_1` FOREIGN KEY (`buku_id`) REFERENCES `buku` (`id`) ON UPDATE CASCADE;
+ALTER TABLE `surat`
+  ADD CONSTRAINT `surat_ibfk_1` FOREIGN KEY (`buku_id`) REFERENCES `buku` (`id`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -48,6 +48,7 @@
         <main>
             <?php 
                 // require_once page($page);
+                echo md5('admin');
             ?>
         </main>
     </div>
