@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 12, 2023 at 07:52 AM
+-- Generation Time: Sep 12, 2023 at 08:04 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -163,6 +163,29 @@ ALTER TABLE `surat_masuk`
 --
 ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `disposisi_surat`
+--
+ALTER TABLE `disposisi_surat`
+  ADD CONSTRAINT `disposisi_surat_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `disposisi_surat_ibfk_2` FOREIGN KEY (`surat_masuk_id`) REFERENCES `surat_masuk` (`id`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `surat_keluar`
+--
+ALTER TABLE `surat_keluar`
+  ADD CONSTRAINT `surat_keluar_ibfk_1` FOREIGN KEY (`buku_id`) REFERENCES `buku` (`id`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `surat_masuk`
+--
+ALTER TABLE `surat_masuk`
+  ADD CONSTRAINT `surat_masuk_ibfk_1` FOREIGN KEY (`buku_id`) REFERENCES `buku` (`id`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
