@@ -1,7 +1,7 @@
 <?php 
 
     // Turn error reporting off
-    // error_reporting(0);
+    error_reporting(0);
 
     // Constant for database
     define('DB_HOST', 'localhost');
@@ -45,10 +45,6 @@
 
             case 'buku-destroy':
                 return 'buku/destroy.php';
-                break;
-
-            case 'surat-index':
-                return 'surat/index.php';
                 break;
 
             case 'surat-index':
