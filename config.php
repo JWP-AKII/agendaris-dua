@@ -1,13 +1,16 @@
 <?php 
 
     // Turn error reporting off
-    // error_reporting(0);
+    error_reporting(0);
+
+    // Start session
+    session_start();
 
     // Constant for database
     define('DB_HOST', 'localhost');
     define('DB_USER', 'root');
     define('DB_PASS', '');
-    define('DB_NAME', '');
+    define('DB_NAME', 'learn_surat');
 
     // Database connection
     $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
@@ -45,10 +48,6 @@
 
             case 'buku-destroy':
                 return 'buku/destroy.php';
-                break;
-
-            case 'surat-index':
-                return 'surat/index.php';
                 break;
 
             case 'surat-index':
@@ -120,17 +119,17 @@
                 return 'Edit surat';
                 break;
                 
-                case 'surat-show':
-                    return 'Detail surat';
-                    break;
-    
-                case 'disposisi-create':
-                    return 'Tambah disposisi';
-                    break;
-    
-                case 'disposisi-update':
-                    return 'Edit disposisi';
-                    break;
+            case 'surat-show':
+                return 'Detail surat';
+                break;
+
+            case 'disposisi-create':
+                return 'Tambah disposisi';
+                break;
+
+            case 'disposisi-update':
+                return 'Edit disposisi';
+                break;
         }
     }
 ?>
