@@ -1,7 +1,7 @@
 <?php 
 
     // Turn error reporting off
-    error_reporting(0);
+    // error_reporting(0);
 
     // Constant for database
     define('DB_HOST', 'localhost');
@@ -47,40 +47,24 @@
                 return 'buku/destroy.php';
                 break;
 
-            case 'suratMasuk-index':
-                return 'surat-masuk/index.php';
+            case 'surat-index':
+                return 'surat/index.php';
                 break;
 
-            case 'suratMasuk-create':
-                return 'surat-masuk/create.php';
+            case 'surat-index':
+                return 'surat/index.php';
                 break;
 
-            case 'suratMasuk-update':
-                return 'surat-masuk/update.php';
+            case 'surat-create':
+                return 'surat/create.php';
                 break;
 
-            case 'suratMasuk-destroy':
-                return 'surat-masuk/destroy.php';
+            case 'surat-update':
+                return 'surat/update.php';
                 break;
 
-            case 'suratKeluar-index':
-                return 'surat-keluar/index.php';
-                break;
-
-            case 'suratKeluar-create':
-                return 'surat-keluar/create.php';
-                break;
-
-            case 'suratKeluar-update':
-                return 'surat-keluar/update.php';
-                break;
-
-            case 'suratKeluar-destroy':
-                return 'surat-keluar/destroy.php';
-                break;
-
-            case 'disposisi-index':
-                return 'disposisi/index.php';
+            case 'surat-destroy':
+                return 'surat/destroy.php';
                 break;
 
             case 'disposisi-create':
@@ -94,6 +78,59 @@
             case 'disposisi-destroy':
                 return 'disposisi/destroy.php';
                 break;
+        }
+    }
+
+    // Function for page title
+    function title($page) {
+        switch($page) {
+            case 'user-index':
+                return 'Data user';
+                break;
+
+            case 'user-create':
+                return 'Tambah user';
+                break;
+
+            case 'user-update':
+                return 'Edit user';
+                break;
+
+            case 'buku-index':
+                return 'Data buku';
+                break;
+
+            case 'buku-create':
+                return 'Tambah buku';
+                break;
+
+            case 'buku-update':
+                return 'Edit buku';
+                break;
+
+            case 'surat-index':
+                return 'Data surat';
+                break;
+
+            case 'surat-create':
+                return 'Tambah surat';
+                break;
+
+            case 'surat-update':
+                return 'Edit surat';
+                break;
+                
+                case 'surat-show':
+                    return 'Detail surat';
+                    break;
+    
+                case 'disposisi-create':
+                    return 'Tambah disposisi';
+                    break;
+    
+                case 'disposisi-update':
+                    return 'Edit disposisi';
+                    break;
         }
     }
 ?>
