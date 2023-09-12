@@ -1,7 +1,7 @@
 <?php 
 
     // Turn error reporting off
-    // error_reporting(0);
+    error_reporting(0);
 
     // Start session
     session_start();
@@ -119,17 +119,17 @@
                 return 'Edit surat';
                 break;
                 
-                case 'surat-show':
-                    return 'Detail surat';
-                    break;
-    
-                case 'disposisi-create':
-                    return 'Tambah disposisi';
-                    break;
-    
-                case 'disposisi-update':
-                    return 'Edit disposisi';
-                    break;
+            case 'surat-show':
+                return 'Detail surat';
+                break;
+
+            case 'disposisi-create':
+                return 'Tambah disposisi';
+                break;
+
+            case 'disposisi-update':
+                return 'Edit disposisi';
+                break;
         }
     }
 ?>
