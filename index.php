@@ -1,9 +1,9 @@
 <?php 
     require_once("config.php");
 
-    // if(empty($_SESSION['id'])) {
-    //     header('location:login.php');
-    // }
+    if(empty($_SESSION['id'])) {
+        header('location:auth/login.php');
+    }
 
     $page = "";
 
@@ -35,7 +35,7 @@
     
             <nav>
                 <p class="btn primary"><span class="fa fa-user"></span> <?= $_SESSION['user'] ?></p>
-                <a href="logout.php" class="btn danger">Logout</a>
+                <a href="auth/logout.php" class="btn danger">Logout</a>
             </nav>
         </div>
     </header>
