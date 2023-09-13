@@ -4,11 +4,11 @@
     // Condition for type
     switch($type) {
         case "masuk":
-            $sql = "SELECT s.*, s.id AS sid, b.* FROM surat s JOIN buku b ON s.buku_id = b.id WHERE s.status <> 'Selesai' ORDER BY s.id DESC";
+            $sql = "SELECT s.*, s.id AS sid, b.* FROM surat s JOIN buku b ON s.buku_id = b.id WHERE s.tipe = 'masuk' ORDER BY s.id DESC";
             break;
             
         case "keluar":
-            $sql = "SELECT s.*, s.id AS sid, b.* FROM surat s JOIN buku b ON s.buku_id = b.id WHERE s.status = 'Selesai' ORDER BY s.id DESC";
+            $sql = "SELECT s.*, s.id AS sid, b.* FROM surat s JOIN buku b ON s.buku_id = b.id WHERE s.tipe = 'keluar' ORDER BY s.id DESC";
             break;
 
     }
@@ -20,7 +20,7 @@
 
 <div class="main-title">
     <h1>Data Surat <?= ucfirst($type) ?></h1>
-    <a href="index.php?page=surat-create" class="btn primary"><span class="fa fa-plus"></span> Buat Surat</a>
+    <a href="index.php?page=surat-create&type=<?= $type ?>" class="btn primary"><span class="fa fa-plus"></span> Buat Surat</a>
 </div>
 <table>
     <thead>

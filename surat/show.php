@@ -24,7 +24,7 @@
     <div>
         <a href="index.php?page=surat-index&type=masuk" class="btn danger"><span class="fa fa-door-open"></span> Cancel</a>
         <a href="index.php?page=surat-update&id=<?= $id ?>" class="btn success"><span class="fa fa-book"></span> Edit</a>
-        <a href="index.php?page=surat-destroy&id=<?= $id ?>" class="btn danger" onclick="return window.confirm('Hapus data?')"><span class="fa fa-trash"></span> Hapus</a>
+        <a href="index.php?page=surat-destroy&id=<?= $id ?>&type=<?= $d_surat->tipe ?>" class="btn danger" onclick="return window.confirm('Hapus data?')"><span class="fa fa-trash"></span> Hapus</a>
     </div>
 </div>
 
@@ -38,12 +38,8 @@
         <td><?= strftime('%A, %d %B %Y', strtotime($d_surat->tanggal_surat)) ?></td>
     </tr>
     <tr>
-        <td>Pengirim</td>
+        <td><?= ($d_surat->tipe == 'masuk') ? 'Pengirim' : 'Penerima' ?></td>
         <td><?= $d_surat->pengirim ?></td>
-    </tr>
-    <tr>
-        <td>Penerima</td>
-        <td><?= (empty($d_surat->penerima)) ? "-" : $d_surat->penerima ?></td>
     </tr>
     <tr>
         <td>Nomor agenda</td>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 12, 2023 at 08:21 AM
+-- Generation Time: Sep 13, 2023 at 09:10 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -55,12 +55,12 @@ CREATE TABLE `surat` (
   `id` int(11) NOT NULL,
   `nomor_surat` int(11) NOT NULL,
   `tanggal_surat` date NOT NULL,
-  `pengirim` text NOT NULL,
-  `penerima` text DEFAULT NULL,
+  `pengirim` text DEFAULT NULL,
   `nomor_agenda` int(11) NOT NULL,
   `tanggal_agenda` date NOT NULL,
   `buku_id` int(11) NOT NULL,
-  `status` enum('Draft','Proses','Selesai','Tahan') NOT NULL
+  `status` enum('Draft','Proses','Selesai','Tahan') NOT NULL,
+  `tipe` enum('masuk','keluar') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -122,25 +122,25 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `buku`
 --
 ALTER TABLE `buku`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `disposisi_surat`
 --
 ALTER TABLE `disposisi_surat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `surat`
 --
 ALTER TABLE `surat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables

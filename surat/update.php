@@ -1,14 +1,14 @@
 <?php
+
     //query buku 
     $bukuid = mysqli_query($conn, "SELECT * FROM buku");
     // Query Create surat 
     $id = $_GET['id'];
     if (isset($_POST['simpan'])) {  
 
-        $penerima = ucwords($_POST['penerima']);
         $status = $_POST['status'];
 
-        $edit = "UPDATE surat SET penerima='$penerima',  status='$status' WHERE id= $id";
+        $edit = "UPDATE surat SET  status='$status' WHERE id= $id";
         
         $sql = mysqli_query($conn, $edit);
 
@@ -37,12 +37,8 @@
             <input type="date" name="tanggal_surat" id="nomor_surat" required value="<?php echo $query['tanggal_surat']?>" disabled>
         </div>
         <div class="input-group">
-            <label for="pengirim">Pengirim</label>
+            <label for="pengirim"><?= ($query['tipe'] == 'masuk') ? 'Pengirim' : 'Penerima' ?></label>
             <input type="text" name="pengirim" id="nomor_surat" required value="<?php echo $query['pengirim']?>" disabled>
-        </div>
-        <div class="input-group">
-            <label for="penerima">Penerima</label>
-            <input type="text" name="penerima" id="nomor_surat" required value="<?php echo $query['penerima']?>">
         </div>
         <div class="input-group">
             <label for="nomor_agenda">Nomor Agenda</label>

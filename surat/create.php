@@ -1,4 +1,7 @@
 <?php
+    // Get value from GET
+    $type = $_GET['type'];
+
     //query buku 
     $bukuid = mysqli_query($conn, "SELECT * FROM buku");
     // Query Create surat 
@@ -10,12 +13,12 @@
         $tglagenda = $_POST['tanggal_agenda'];
         $buku = $_POST['buku_id'];
 
-        $tambah = "INSERT INTO surat(nomor_surat, tanggal_surat, pengirim, nomor_agenda, tanggal_agenda, buku_id, status) VALUES ('$nsurat', '$tglsurat', '$pengirim', '$nagenda', '$tglagenda', '$buku', 'Draft')";
+        $tambah = "INSERT INTO surat(nomor_surat, tanggal_surat, pengirim, nomor_agenda, tanggal_agenda, buku_id, status, tipe) VALUES ('$nsurat', '$tglsurat', '$pengirim', '$nagenda', '$tglagenda', '$buku', 'Draft', '$type')";
         
         $sql = mysqli_query($conn, $tambah);
 
         if ($sql) {
-            header("Location:index.php?page=surat-index&type=masuk");
+            header("Location:index.php?page=surat-index&type=$type");
         }
     }
 ?>
@@ -31,7 +34,7 @@
             <input type="date" name="tanggal_surat" id="nomor_surat" required value="">
         </div>
         <div class="input-group">
-            <label for="pengirim">Pengirim</label>
+            <label for="pengirim"><?= ($type == 'masuk') ? 'Pengirim' : 'Penerima' ?></label>
             <input type="text" name="pengirim" id="nomor_surat" required value="">
         </div>
         <div class="input-group">
