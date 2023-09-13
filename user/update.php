@@ -1,47 +1,87 @@
 <?php 
 
+    // Get value from GET
     $id = $_GET['id'];
-    if(isset($_POST['submit'])) {
-        $username = $_POST['username'];
-        $password = ($_POST['password']);
-        $jabatan = $_POST['jabatan'];
 
-        //query user edit
-        $u_user = "UPDATE user SET username = '$username', password = '$password', jabatan = '$jabatan' WHERE id = $id";
-        $q_u_user = mysqli_query($conn, $u_user);
-            if($q_u_user) {
+    // Select user by id
+    $s_user = "SELECT * FROM user WHERE id = $id";
+    $q_s_user = mysqli_query($conn, $s_user);
+    $d_user = mysqli_fetch_object($q_s_user);
+
+    // Update user detail process
+    if(isset($_POST['simpanDetail'])) {
+        $user = $_POST['user'];
+        $jabatan = ucwords($_POST['jabatan']);
+
+        // Query to save user detail
+        $u_userDetail = "UPDATE user SET username = '$user', jabatan = '$jabatan' WHERE id = '$id'";
+        $q_u_userDetail = mysqli_query($conn, $u_userDetail);
+
+        // Condition if query return TRUE
+        if($q_u_userDetail) {
             header("location:index.php?page=user-index");
-            }
-        
         }
-        //query memilih user
-        $user ="SELECT * FROM user WHERE id=$id";
-        $queryuser =mysqli_query($conn, $user);
-        $d_user = mysqli_fetch_object($queryuser);
+    }
+    
+    // Update user password process
+    if(isset($_POST['simpanPass'])) {
+        $pass = md5($_POST['pass']);
         
+        // Query to save user password
+        $u_userPass = "UPDATE user SET password = '$pass' WHERE id = $id";
+        $q_u_userPass = mysqli_query($conn, $u_userPass);
+        
+        // Condition if query return TRUE
+        if($q_u_userPass) {
+            header("location:index.php?page=user-index");
+        }
+    }
 ?>
-<h1>Edit Data</h1>
+
+<div class="main-title">
+    <h1>Edit user</h1>
+    <a href="index.php?page=user-index" class="btn danger"><span class="fa fa-door-open"></span> Cancel</a>
+</div>
+
+<br>
+
+<div class="main-title">
+    <h3>Edit user detail</h3>
+</div>
 
 <div class="form">
-    <form action="" method="POST">
+    <form action="" method="post">
         <div class="input-group">
-            <label for="username">Nama</label>
-            <input type="text" name="username" id="username" autocomplete="off" required value="<?= $d_user->username?>">
-        </div>
-
-        <div class="input-group">
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password" autocomplete="off" required value="<?= $d_user->password ?>">
+            <label for="user">Username</label>
+            <input type="text" name="user" id="user" autocomplete="off" required value="<?= $d_user->username ?>">
         </div>
 
         <div class="input-group">
             <label for="jabatan">Jabatan</label>
-            <input type="text" name="jabatan" id="jabatan" autocomplete="off" min="0" required value="<?= $d_user->jabatan ?>">
+            <input type="text" name="jabatan" id="jabatan" autocomplete="off" required value="<?= $d_user->jabatan ?>">
         </div>
 
         <div class="form-button">
-            <button type="submit" name="submit" class="btn primary"><span class="fa fa-floppy-disk"></span> Simpan</button>
-            <a href="index.php?page=user-index" class="btn danger"><span class="fa fa-xmark"></span> Cancel</a>
+            <button type="submit" name="simpanDetail" class="btn primary"><span class="fa fa-floppy-disk"></span> Simpan</button>
+        </div>
+    </form>
+</div>
+
+<br>
+
+<div class="main-title">
+    <h3>Edit user password</h3>
+</div>
+
+<div class="form">
+    <form action="" method="post">
+        <div class="input-group">
+            <label for="pass">Password</label>
+            <input type="password" name="pass" id="pass" autocomplete="off" required>
+        </div>
+
+        <div class="form-button">
+            <button type="submit" class="btn primary" name="simpanPass"><span class="fa fa-floppy-disk"></span> Simpan</button>
         </div>
     </form>
 </div>
