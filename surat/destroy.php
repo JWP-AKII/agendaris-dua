@@ -1,12 +1,15 @@
 <?php
 
-//query
+// Get value from GET
 $id = $_GET['id'];
+
+//query
 $delete = "DELETE FROM surat WHERE id = $id";
-//proses query
+$d_disposisi = "DELETE FROM disposisi_surat WHERE surat_masuk_id = $id";
+$q_d_disposisi = mysqli_query($conn, $d_disposisi);
 $sql = mysqli_query($conn, $delete);
 
-if ($sql) {
+if ($sql AND $q_d_disposisi) {
     header("Location:index.php?page=surat-index&type=masuk");
 }
 ?>

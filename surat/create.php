@@ -5,7 +5,7 @@
     if (isset($_POST['simpan'])) {  
         $nsurat = $_POST['nomor_surat'];
         $tglsurat = $_POST['tanggal_surat'];
-        $pengirim = $_POST['pengirim'];
+        $pengirim = ucwords($_POST['pengirim']);
         $nagenda = $_POST['nomor_agenda'];
         $tglagenda = $_POST['tanggal_agenda'];
         $buku = $_POST['buku_id'];
@@ -15,7 +15,7 @@
         $sql = mysqli_query($conn, $tambah);
 
         if ($sql) {
-            header("Location:index.php?page=surat-index");
+            header("Location:index.php?page=surat-index&type=masuk");
         }
     }
 ?>

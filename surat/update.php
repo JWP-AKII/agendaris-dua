@@ -5,7 +5,7 @@
     $id = $_GET['id'];
     if (isset($_POST['simpan'])) {  
 
-        $penerima = $_POST['penerima'];
+        $penerima = ucwords($_POST['penerima']);
         $status = $_POST['status'];
 
         $edit = "UPDATE surat SET penerima='$penerima',  status='$status' WHERE id= $id";
