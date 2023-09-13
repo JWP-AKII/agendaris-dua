@@ -21,7 +21,11 @@
     $sqli = mysqli_query($conn, $select);
     $query = mysqli_fetch_assoc($sqli);
 ?>
-<h1>Edit Surat</h1>
+<div class="main-title">
+    <h1>Edit surat</h1>
+    <a href="index.php?page=surat-show&id=<?= $id ?>" class="btn danger"><span class="fa fa-door-open"></span> Cancel</a>
+</div>
+
 <div class="form">
     <form action="" method="post">
         <div class="input-group">
