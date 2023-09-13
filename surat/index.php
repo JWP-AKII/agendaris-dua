@@ -1,5 +1,5 @@
         <h1> DATA SURAT</h1>
-        <a href="index.php?page=surat-index">Buat Surat</a>
+        <a href="index.php?page=surat-create">Buat Surat</a>
         <table>
             <thead>
                 <th>No</th>

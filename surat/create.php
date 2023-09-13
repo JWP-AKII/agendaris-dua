@@ -1,10 +1,8 @@
 <?php
-    require_once("../config.php");
-
+    //query buku 
     $bukuid = mysqli_query($conn, "SELECT * FROM buku");
-
-    if (isset($_POST['simpan'])) {
-        
+    // Query Create surat 
+    if (isset($_POST['simpan'])) {  
         $nsurat = $_POST['nomor_surat'];
         $tglsurat = $_POST['tanggal_surat'];
         $pengirim = $_POST['pengirim'];
@@ -32,14 +30,14 @@
         </div>
         <div class="input-group">
             <label for="tanggal_surat">Tanggal Surat</label>
-            <input type="text" name="tanggal_surat" id="nomor_surat" required value="">
+            <input type="date" name="tanggal_surat" id="nomor_surat" required value="">
         </div>
         <div class="input-group">
             <label for="pengirim">Pengirim</label>
             <input type="text" name="pengirim" id="nomor_surat" required value="">
         </div>
         <div class="input-group">
-            <label for="penerima">Penerimat</label>
+            <label for="penerima">Penerima</label>
             <input type="text" name="penerima" id="nomor_surat" required value="">
         </div>
         <div class="input-group">
@@ -52,11 +50,14 @@
         </div>
         <div class="input-group">
             <label for="buku_id">Buku</label>
-            <input type="text" name="buku_id" id="buku_id" required value="">
-        </div>
-        <div class="input-group">
-            <label for="status">Status</label>
-            <input type="text" name="status" id="status" required value="">
+            <select name="buku_id" id="buku_id">
+                <!-- Perulangan buku -->
+                    <?php while ($result = mysqli_fetch_assoc($bukuid)) {?>
+                    <option value="<?php echo $result['id'] ?>"> <?php echo $result['']?> </option>
+                    <?php
+                        }
+                    ?>
+            </select>   
         </div>
     </form>
 </div>
