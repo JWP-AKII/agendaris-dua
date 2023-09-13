@@ -32,7 +32,7 @@
         </div>
 
         <div class="form-button">
-            <button type="submit" class="btn primary"><span class="fa fa-floppy-disk"></span> Simpan</button>
+            <button type="submit" class="btn primary" name="submit"><span class="fa fa-floppy-disk"></span> Simpan</button>
         </div>
     </form>
 </div>
