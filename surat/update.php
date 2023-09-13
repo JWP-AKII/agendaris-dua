@@ -13,7 +13,7 @@
         $sql = mysqli_query($conn, $edit);
 
         if ($sql) {
-            header("Location: index.php?page=surat-index&type=masuk");
+            header("Location: index.php?page=surat-show&id=$id");
         }
     }
     //Query data surat
@@ -55,10 +55,10 @@
         <div class="input-group">
             <label for="status">Status</label>
             <select name="status" id="status">
-                <option value="Draft">Draft</option>
-                <option value="Proses">Proses</option>
-                <option value="Selesai">Selesai</option>
-                <option value="Tahan">Tahan</option>
+                <option value="Draft" <?= ($query['status'] == 'Draft') ? "selected" : '' ?>>Draft</option>
+                <option value="Proses" <?= ($query['status'] == 'Proses') ? "selected" : '' ?>>Proses</option>
+                <option value="Selesai" <?= ($query['status'] == 'Selesai') ? "selected" : '' ?>>Selesai</option>
+                <option value="Tahan" <?= ($query['status'] == 'Tahan') ? "selected" : '' ?>>Tahan</option>
             </select>
         </div>
 

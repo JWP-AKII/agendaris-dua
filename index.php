@@ -14,6 +14,9 @@
     }
 
     $pageCat = explode('-', $page);
+    if(isset($_GET['type'])) {
+        $type = $_GET['type'];
+    }
 ?>
 
 <!DOCTYPE html>
@@ -42,10 +45,10 @@
     
     <div class="content">
         <aside>
-            <a href="index.php?page=user-index" class="<?= ($pageCat[0] == 'city') ? 'active' : '' ?>"><span class="fa fa-user"></span> User</a>
-            <a href="index.php?page=buku-index" class="<?= ($pageCat[0] == 'city') ? 'active' : '' ?>"><span class="fa fa-book"></span> Buku</a>
-            <a href="index.php?page=surat-index&type=masuk" class="<?= ($pageCat[0] == 'city') ? 'active' : '' ?>"><span class="fa fa-envelope"></span> Surat Masuk</a>
-            <a href="index.php?page=surat-index&type=keluar" class="<?= ($pageCat[0] == 'city') ? 'active' : '' ?>"><span class="fa fa-envelope-open-text"></span> Surat Keluar</a>
+            <a href="index.php?page=user-index" class="<?= ($pageCat[0] == 'user') ? 'active' : '' ?>"><span class="fa fa-user"></span> User</a>
+            <a href="index.php?page=buku-index" class="<?= ($pageCat[0] == 'buku') ? 'active' : '' ?>"><span class="fa fa-book"></span> Buku</a>
+            <a href="index.php?page=surat-index&type=masuk" class="<?= (($pageCat[0] == 'surat') AND ($type == 'masuk')) ? 'active' : '' ?>"><span class="fa fa-envelope"></span> Surat Masuk</a>
+            <a href="index.php?page=surat-index&type=keluar" class="<?= (($pageCat[0] == 'surat') AND ($type == 'keluar')) ? 'active' : '' ?>"><span class="fa fa-envelope-open-text"></span> Surat Keluar</a>
         </aside>
 
         <main>
