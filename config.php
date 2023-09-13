@@ -1,10 +1,13 @@
 <?php 
 
     // Turn error reporting off
-    error_reporting(0);
+    // error_reporting(0);
 
     // Start session
     session_start();
+
+    // Set locale
+    setlocale(LC_ALL, 'id-ID', 'id_ID');
 
     // Constant for database
     define('DB_HOST', 'localhost');
@@ -52,6 +55,10 @@
 
             case 'surat-index':
                 return 'surat/index.php';
+                break;
+
+            case 'surat-show':
+                return 'surat/show.php';
                 break;
 
             case 'surat-create':
