@@ -1,6 +1,4 @@
 <?php
-//koneksi
-require_once("../config.php");
 
 //query
 $id = $_GET['id'];
@@ -9,6 +7,6 @@ $delete = "DELETE FROM surat WHERE id = $id";
 $sql = mysqli_query($conn, $delete);
 
 if ($sql) {
-    header("Location: index.php");
+    header("Location:index.php?page=surat-index&type=masuk");
 }
 ?>

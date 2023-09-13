@@ -6,22 +6,20 @@
         $nsurat = $_POST['nomor_surat'];
         $tglsurat = $_POST['tanggal_surat'];
         $pengirim = $_POST['pengirim'];
-        $penerima = $_POST['penerima'];
         $nagenda = $_POST['nomor_agenda'];
         $tglagenda = $_POST['tanggal_agenda'];
         $buku = $_POST['buku_id'];
-        $status = $_POST['status'];
 
-        $tambah = "INSERT INTO surat(nomor_surat, tanggal_surat, pengirim, penerima, nomor_agenda, tanggal_agenda, buku_id, status) VALUES ('$nsurat', '$tglsurat', '$pengirim', '$penerima', '$nagenda', '$tglagenda', '$buku', '$status')";
+        $tambah = "INSERT INTO surat(nomor_surat, tanggal_surat, pengirim, nomor_agenda, tanggal_agenda, buku_id, status) VALUES ('$nsurat', '$tglsurat', '$pengirim', '$nagenda', '$tglagenda', '$buku', 'Draft')";
         
         $sql = mysqli_query($conn, $tambah);
 
         if ($sql) {
-            header("Location: index.php");
+            header("Location:index.php?page=surat-index");
         }
     }
 ?>
-<h1>BUAT SURAT</h1>
+<h1>Tambah Surat</h1>
 <div class="form">
     <form action="" method="post">
         <div class="input-group">
@@ -37,10 +35,6 @@
             <input type="text" name="pengirim" id="nomor_surat" required value="">
         </div>
         <div class="input-group">
-            <label for="penerima">Penerima</label>
-            <input type="text" name="penerima" id="nomor_surat" required value="">
-        </div>
-        <div class="input-group">
             <label for="nomor_agenda">Nomor Agenda</label>
             <input type="text" name="nomor_agenda" id="nomor_surat" required value="">
         </div>
@@ -53,11 +47,15 @@
             <select name="buku_id" id="buku_id">
                 <!-- Perulangan buku -->
                     <?php while ($result = mysqli_fetch_assoc($bukuid)) {?>
-                    <option value="<?php echo $result['id'] ?>"> <?php echo $result['']?> </option>
+                    <option value="<?php echo $result['id'] ?>"> <?php echo $result['nama']?> </option>
                     <?php
                         }
                     ?>
             </select>   
+        </div>
+
+        <div class="form-button">
+            <button type="submit" class="btn primary" name="simpan"><span class="fa fa-floppy-disk"></span> Tambah</button>
         </div>
     </form>
 </div>
