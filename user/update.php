@@ -6,23 +6,18 @@
         $password = ($_POST['password']);
         $jabatan = $_POST['jabatan'];
 
-        
-        
-        
         //query user edit
         $u_user = "UPDATE user SET username = '$username', password = '$password', jabatan = '$jabatan' WHERE id = $id";
         $q_u_user = mysqli_query($conn, $u_user);
-        if($q_u_user) {
+            if($q_u_user) {
             header("location:index.php?page=user-index");
-        }
+            }
         
         }
+        //query memilih user
         $user ="SELECT * FROM user WHERE id=$id";
         $queryuser =mysqli_query($conn, $user);
         $d_user = mysqli_fetch_object($queryuser);
-        
-    
-
         
 ?>
 <h1>Edit Data</h1>
