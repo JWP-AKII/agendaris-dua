@@ -10,8 +10,8 @@
 ?>
 
 <div class="main-title">
-    <h1>Welcome User!</h1>
-    <a href="index.php?page=user-create" class="btn primary"><span class="fa fa-plus"></span>Add User</a>
+    <h1>Data user</h1>
+    <a href="index.php?page=user-create" class="btn primary"><span class="fa fa-plus"></span>Add user</a>
 </div>
 
 <table border="1">
