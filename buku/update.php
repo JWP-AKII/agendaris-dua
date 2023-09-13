@@ -8,7 +8,7 @@
     // $q_s_parent = mysqli_query($conn, $s_parent);
     // $d_parent = mysqli_fetch_object($q_s_parent);
     if(isset($_POST['submit'])) {
-        $nama = $_POST['nama'];
+        $nama = ucwords($_POST['nama']);
 
         $u_buku = "UPDATE buku SET nama = '$nama' WHERE id = '$id'";
         $q_u_buku = mysqli_query($conn, $u_buku);

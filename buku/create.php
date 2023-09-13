@@ -8,7 +8,7 @@
     // $d_buku = mysqli_fetch_object($q_s_parent);
 
     if(isset($_POST['submit'])) {
-        $nama = $_POST['nama'];
+        $nama = ucwords($_POST['nama']);
 
         $sql = "INSERT INTO buku (nama) VALUES ('$nama')";
         $prosesQuery = mysqli_query($conn, $sql);
