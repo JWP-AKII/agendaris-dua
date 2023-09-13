@@ -1,19 +1,18 @@
 <?php 
 
-    $id = $_GET['id'];
     if(isset($_POST['submit'])) {
         $username = $_POST['username'];
         $password = md5($_POST['password']);
         $jabatan = $_POST['jabatan'];
 
-        if($q_u_user) {
-            header("location:index.php?page=user-index");
-        }
-
+        
         //query tambah data
         $u_user = "INSERT INTO user (id, username, password, jabatan) VALUES ('', '$username', '$password', '$jabatan')";
         $q_u_user = mysqli_query($conn, $u_user);
-        $d_user = mysqli_fetch_object($q_u_user);
+
+        if($q_u_user) {
+            header("location:index.php?page=user-index");
+        }
     }
 ?>
 
@@ -23,17 +22,17 @@
     <form action="" method="POST">
         <div class="input-group">
             <label for="username">Username</label>
-            <input type="text" name="username" id="username" autocomplete="off" required value="<?= $d_user->username ?>">
+            <input type="text" name="username" id="username" autocomplete="off" required>
         </div>
 
         <div class="input-group">
             <label for="password">Password</label>
-            <input type="password" name="password" id="password" autocomplete="off" required value="<?= $d_user->password ?>">
+            <input type="password" name="password" id="password" autocomplete="off" required>
         </div>
 
         <div class="input-group">
             <label for="jabatan">Jabatan</label>
-            <input type="text" name="jabatan" id="jabatan" autocomplete="off" min="0" required value="<?= $d_user->jabatan?>">
+            <input type="text" name="jabatan" id="jabatan" autocomplete="off" min="0" required>
         </div>
 
         <div class="form-button">
