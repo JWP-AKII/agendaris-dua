@@ -1,7 +1,7 @@
 <?php 
 
     // Turn error reporting off
-    error_reporting(0);
+    // error_reporting(0);
 
     // Start session
     session_start();
@@ -52,6 +52,10 @@
 
             case 'surat-index':
                 return 'surat/index.php';
+                break;
+
+            case 'surat-show':
+                return 'surat/show.php';
                 break;
 
             case 'surat-create':
