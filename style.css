@@ -36,6 +36,7 @@ td.action {
 
 td:nth-child(1) {
     width: 5%;
+    text-align: center;
 }
 
 table tr td img {

@@ -6,6 +6,9 @@
     // Start session
     session_start();
 
+    // Set locale
+    setlocale(LC_ALL, 'id-ID', 'id_ID');
+
     // Constant for database
     define('DB_HOST', 'localhost');
     define('DB_USER', 'root');
